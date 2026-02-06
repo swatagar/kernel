@@ -74,16 +74,6 @@ struct qcom_scm_pas_metadata {
 	ssize_t size;
 };
 
-struct qcom_scm_pas_context {
-	struct device *dev;
-	u32 pas_id;
-	phys_addr_t mem_phys;
-	size_t mem_size;
-	void *ptr;
-	dma_addr_t phys;
-	ssize_t size;
-};
-
 struct qcom_scm_camera_qos {
 	u32 offset;
 	u32 val;
@@ -92,11 +82,6 @@ struct qcom_scm_camera_qos {
 int qcom_scm_camera_update_camnoc_qos(uint32_t use_case_id,
 		uint32_t qos_cnt, struct qcom_scm_camera_qos *scm_buf);
 
-
-struct qcom_scm_pas_context *devm_qcom_scm_pas_context_init(struct device *dev,
-							    u32 pas_id,
-							    phys_addr_t mem_phys,
-							    size_t mem_size);
 int qcom_scm_pas_init_image(u32 pas_id, const void *metadata, size_t size,
 			    struct qcom_scm_pas_metadata *ctx);
 void qcom_scm_pas_metadata_release(struct qcom_scm_pas_metadata *ctx);
